@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franck TCHEUTCHOUA - Développeur Logiciel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.9;
+            z-index: -1;
+        }
+
+        .header-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .typing-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            min-height: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        /* Manifeste */
+        .manifesto {
+            background: var(--gradient-2);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manifesto p {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h4 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category h4 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-category li i {
+            margin-right: 10px;
+            color: var(--success);
+        }
+
+        /* Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px 12px 0 0;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 0.75rem;
+}
+
+.project-content p {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    padding: 0.3rem 0.75rem;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.project-links .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-right: 0.5rem;
+    transition: background 0.3s;
+}
+
+.btn-primary {
+    background-color: #333;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #555;
+}
+
+.btn-secondary {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #0056b3;
+}
+
+
+        /* Contact */
+        .contact-info {
+            text-align: center;
+            font-size: 1.2rem;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-dark);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--gray);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+            66% {
+                transform: translateY(-5px) rotate(-1deg);
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">FT</div>
+            <ul class="nav-links">
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>TCHEUTCHOUA TAKOUGNE Franck</h1>
+                <div class="subtitle">Développeur Logiciel Full-Stack & IA</div>
+                <div class="typing-text" id="typing-text"></div>
+                <a href="#projects" class="cta-button">Voir Mes Projets <i class="fas fa-arrow-down"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Manifeste -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="manifesto floating">
+                <h2 class="section-title">Ma Vision du Développement</h2>
+                <p>"Le développement logiciel est l'art de résoudre des problèmes complexes avec une élégance technique, en créant des solutions qui améliorent concrètement la vie des utilisateurs et optimisent les processus métiers."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Mes Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Frontend & Web</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> React & TypeScript</li>
+                        <li><i class="fas fa-check"></i> JavaScript (ES6+)</li>
+                        <li><i class="fas fa-check"></i> HTML5 / CSS3</li>
+                        <li><i class="fas fa-check"></i> Développement Responsive</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4><i class="fas fa-server"></i> Backend & Logiciel</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Python (IA, Backend)</li>
+                        <li><i class="fas fa-check"></i> Node.js</li>
+                        <li><i class="fas fa-check"></i> API REST</li>
+                        <li><i class="fas fa-check"></i> WinDev / WebDev</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4><i class="fas fa-database"></i> Bases de Données</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> MySQL</li>
+                        <li><i class="fas fa-check"></i> PostgreSQL</li>
+                        <li><i class="fas fa-check"></i> SQLite</li>
+                        <li><i class="fas fa-check"></i> Modélisation de données</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4><i class="fas fa-tools"></i> Outils & Méthodes</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Git / GitHub</li>
+                        <li><i class="fas fa-check"></i> Développement Agile</li>
+                        <li><i class="fas fa-check"></i> WinDev Mobile</li>
+                        <li><i class="fas fa-check"></i> Déploiement Web</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Mes Projets</h2>
+            <div class="projects-grid">
+               <!-- Projet 1 -->
+<div class="project-card">
+    <div class="project-image">
+        <!-- Remplace l'icône par ton image si tu en as une -->
+        <img src="C:\Users\HP\Downloads\portefolio\images\whataboutyou-web.png.png">
+        <!-- <i class="fas fa-lightbulb"></i> -->
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">WHAT ABOUT YOU - WAY</h3>
+        <p>
+            Foire entrepreneuriale, socio-culturelle et de divertissement qui mobilise les jeunes autour de 
+            l'entrepreneuriat et de l'innovation. Rejoignez-nous pour des expositions, conférences, salons professionnels 
+            et divertissements uniques.
+        </p>
+        <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Vite</span>
+        </div>
+        <div class="project-links">
+            <a href="https://github.com/tambongslade/whataboutyou" class="btn btn-primary" target="_blank">
+                <i class="fab fa-github"></i> Code Source
+            </a>
+            <a href="https://whataboutyou.net/" class="btn btn-secondary" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Démo Live
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Projet Leader Service -->
+<div class="project-card">
+    <div class="project-image">
+        <!-- Remplace l'icône par ton image si tu en as une -->
+        <img src="C:\Users\HP\Downloads\portefolio\images\leader-service.png.png"/>
+        <!-- <i class="fas fa-industry"></i> -->
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">ENTREPRISE LEADER SERVICE</h3>
+        <p>
+            Expertise en génie civil et solutions industrielles de haute qualité. 
+            Étendre notre action sur le territoire national et international, devenir un acteur incontournable 
+            du génie civil, et mettre en service une maintenance industrielle et automobile fiable.
+        </p>
+        <div class="project-tech">
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">HTML</span>
+        </div>
+        <div class="project-links">
+            <a href="https://github.com/Takougne/leader-service-web" class="btn btn-primary" target="_blank">
+                <i class="fab fa-github"></i> Code Source
+            </a>
+            <a href="https://leaderservicebtp.com/" class="btn btn-secondary" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Démo Live
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="project-card">
+    <div class="project-image">
+        <!-- Remplace l'icône par ton image si tu en as une -->
+        <img src="C:\Users\HP\Downloads\portefolio\images\windev.png"/>
+        <!-- <i class="fas fa-industry"></i> -->
+    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Système de Gestion des Étudiants</h3>
+                        <p>Application complète de gestion académique avec CRUD, base de données intégrée et interface optimisée pour WinDev 2025.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">WinDev</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">WLangage</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary"><i class="fab fa-github"></i> Code Source</a>
+                            <a href="#" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Démo Live</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets Recommandés -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Projets en Développement</h2>
+            <div class="projects-grid">
+
+       <!-- Projet Chop -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <!-- Image ou logo de Chop -->
+                        <img src="C:\Users\HP\Downloads\portefolio\images\chop.png" alt="Logo Chop - Plateforme de commande de repas" />
+                        <!-- <i class="fas fa-utensils"></i> -->
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CHOP</h3>
+                        <p>
+                            Chop est une plateforme mobile et web de commande de repas au Cameroun.  
+                            Elle connecte les cuisiniers indépendants, les restaurants et les clients 
+                            pour faciliter la découverte, la commande et la livraison de plats locaux authentiques.  
+                            <br><br>
+                            <strong>Objectif</strong> : simplifier l’accès à la bonne cuisine camerounaise, promouvoir les talents culinaires et encourager la consommation locale.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">API REST</span>
+                        </div>
+                    </div>
+                </div>
+
+
+     <!-- Projet Lion's TV -->
+            <div class="project-card">
+                <div class="project-image">
+                    <!-- Image ou logo de Lion's TV -->
+                    <img src="C:\Users\HP\Downloads\portefolio\images\lions-tv.png" alt="Logo Lion's TV" />
+                    <!-- <i class="fas fa-tv"></i> -->
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">LION'S TV</h3>
+                    <p>
+                        Télévision axée sur le développement des collectivités territoriales décentralisées 
+                        à travers l'information, le divertissement, le tourisme et l'écologie.  
+                        <br><br>
+                        "Lion's TV+, LE SYMBOLE DE LA NATION"
+                        <br><br>
+                        <strong>Objectif</strong> : Diffuser Lion’s TV en direct sur le site web hébergé chez Hostinger, en utilisant vMix comme outil de production vidéo.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Hostinger</span>
+                        <span class="tech-tag">Sqlite3</span>
+                        <span class="tech-tag">Développement local</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:takougnefranck@gmail.com">takougnefranck@gmail.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Cameroun - Yaoundé</p>
+                <p><i class="fas fa-briefcase"></i> Développeur Full-Stack & IA</p>
+                
+                <div class="social-links">
+                    <a href="www.linkedin.com/in/franck-t-b08625127" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Takougne" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/Takougne" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 TCHEUTCHOUA TAKOUGNE Franck. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#6366f1" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#6366f1",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+
+        // Typing Animation
+        const typingText = document.getElementById('typing-text');
+        const texts = [
+            "Développeur Full-Stack",
+            "Spécialiste WinDev/WebDev", 
+            "Passionné d'IA & Machine Learning",
+            "Innovation & Optimisation"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(type, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 50 : 100);
+            }
+        }
+
+        // Start typing animation
+        setTimeout(type, 1000);
+
+        // Scroll animations avec Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Animation supplémentaire pour les cartes de projet
+                    if (entry.target.classList.contains('project-card')) {
+                        entry.target.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    }
+                    
+                    // Animation en escalier pour les compétences
+                    if (entry.target.classList.contains('skill-category')) {
+                        const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 100;
+                        entry.target.style.transition = `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}ms`;
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.skill-category, .project-card, .manifesto, .contact-info').forEach((el) => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Nav background on scroll avec effet de flou
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            const scrollY = window.scrollY;
+            
+            if (scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.backdropFilter = 'blur(10px)';
+                nav.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                nav.style.padding = '0.8rem 0';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(5px)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                nav.style.padding = '1rem 0';
+            }
+        });
+
+        // Hover animations avancées pour les boutons
+        document.querySelectorAll('.btn, .social-link, .cta-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Initialisation de toutes les animations au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Portfolio chargé avec succès !');
+        });
+    </script>
+</body>
+</html> 
